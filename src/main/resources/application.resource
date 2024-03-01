@@ -1,7 +1,1 @@
-spring.datasource.url=jdbc:h2:mem:test
-spring.datasource.username=sa
-spring.datasource.password=
-spring.datasource.driverClassName=org.h2.Driver
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-
-spring.jpa.hibernate.ddl-auto=update
+spring.data.mongodb.uri=mongodb://localhost:27017/EmployeeDB
