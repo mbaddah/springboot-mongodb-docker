@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Items</title>
+</head>
+<body>
+<h1>Grocery Items</h1>
+
+<h2>All Items</h2>
+<ul id="itemList"></ul>
+
+<script>
+    // Function to fetch and display all items
+    function fetchItems() {
+        fetch('http://localhost:8080/items')
+        .then(response => response.json())
+        .then(data => {
+            const itemList = document.getElementById('itemList');
+            itemList.innerHTML = ''; // Clear previous items
+            data.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Name: ${item.name}, Quantity: ${item.quantity}, Category: ${item.category}`;
+                itemList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Call the fetchItems function when the page loads
+    window.onload = fetchItems;
+</script>
+</body>
+</html>
