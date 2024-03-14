@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - monitoring_network
+
+  mongodb_exporter:
+    image: bitnami/mongodb-exporter
+    container_name: mongodb_exporter
+    ports:
+      - "9216:9216"
+    networks:
+      - monitoring_network
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+    networks:
+      - monitoring_network
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      - monitoring_network
+    depends_on:
+      - prometheus
+
+networks:
+  monitoring_network:
