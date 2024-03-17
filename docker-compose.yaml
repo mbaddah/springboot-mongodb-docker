@@ -6,11 +6,11 @@ services:
     container_name: mongodb
     ports:
       - "27017:27017"
+    command: ["mongod", "--profile", "1"]
     networks:
       - monitoring_network
-
   mongodb_exporter:
-    image: bitnami/mongodb-exporter
+    image: percona/mongodb_exporter:0.40
     container_name: mongodb_exporter
     ports:
       - "9216:9216"
@@ -18,7 +18,6 @@ services:
       - monitoring_network
     environment:
       - MONGODB_URI=mongodb://mongodb:27017
-
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -28,7 +27,13 @@ services:
       - ./prometheus:/etc/prometheus
     networks:
       - monitoring_network
-
+  node_exporter:
+    image: prom/node-exporter
+    container_name: node_exporter
+    ports:
+      - "9100:9100"
+    networks:
+      - monitoring_network
   grafana:
     image: grafana/grafana
     container_name: grafana
@@ -40,6 +45,6 @@ services:
       - monitoring_network
     depends_on:
       - prometheus
-
 networks:
   monitoring_network:
+    driver: bridge

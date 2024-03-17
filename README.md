@@ -1,7 +1,5 @@
 # Simple spring boot app
 
-- Run with `mvn clean spring-boot:run`
-
 ### Docs:
 - View docs via http://localhost:8080/v3/api-docs
 - View swagger docs via http://localhost:8080/swagger-ui/index.html
@@ -11,9 +9,14 @@
 
 - Grafana/Prom setup:
 - Login to grafana via localhost:3000 `admin/admin`
-- Add local prometheus source http://host.docker.internal:9090 (or http://prometheus:9090) 
-- Add mongodb dashboard (#2583)
+- Add local prometheus source http://host.docker.internal:9090 (or http://prometheus:9090 ) 
+- Mongodb dashboards (TBD. Testing with 20192, 20387)
 - ** Fix scraping
+
+### To run app
+
+- Run with `mvn clean spring-boot:run`
+
 
 ### Usage:
 - Access app via http://localhost:8080/
@@ -27,6 +30,7 @@
 - Update configuration
 - Develop web interface
 - Automate prom/grafana setup
+- Setup mongodb dashboard
 
 ### References:
 - https://github.com/grafana/grafana/issues/46434
