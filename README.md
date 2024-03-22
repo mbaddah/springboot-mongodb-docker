@@ -12,8 +12,11 @@
 - Put : e.g. localhost:8080/items?id=Dried%20Red%20Chilli + payload
 - Delete : localhost:8080/items?id=Dried%20Red%20Chilli
 
+### Tests
+
+- Run with `mvn test`. Note the rest assured tests will fail if the service is not already running.
+
 ### To-do:
 - Dockerise
-- Add tests
 - Structure DB
 - Update configuration
