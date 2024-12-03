@@ -8,6 +8,7 @@
 
 ### Usage:
 - Access via http://localhost:8080/
+- Get: localhost:8080/items
 - Post : localhost:8080/items + payload
 - Put : e.g. localhost:8080/items?id=Dried%20Red%20Chilli + payload
 - Delete : localhost:8080/items?id=Dried%20Red%20Chilli
